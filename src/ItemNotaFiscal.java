@@ -11,7 +11,6 @@ public class ItemNotaFiscal {
         this.descricao = descricao;
         this.quantidade = quantidade;
         this.valorUnitario = valorUnitario;
-        this.proximo = null;
     }
 
     public double getValorTotalItem() {
@@ -34,8 +33,12 @@ public class ItemNotaFiscal {
         return valorUnitario;
     }
 
-    public boolean temNumero(String numero) {
-        return itemNumero.equals(numero);
+    public void imprimirTodaLista() {
+        ItemNotaFiscal itemAtual = this; // Começa na instância atual
+        while (itemAtual != null) {
+            System.out.println(itemAtual.toString());
+            itemAtual = itemAtual.proximo;
+        }
     }
 
     @Override
@@ -47,13 +50,5 @@ public class ItemNotaFiscal {
                 ", valorUnitario=" + valorUnitario +
                 ", proximo=" + proximo +
                 '}';
-    }
-
-    public ItemNotaFiscal getProximoItem() {
-        return null;
-    }
-
-    public Object getNumero() {
-        return null;
     }
 }

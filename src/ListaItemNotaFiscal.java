@@ -15,15 +15,23 @@ public class ListaItemNotaFiscal {
         quantidade++;
     }
 
-    public String encontrarNotaPorNumero(String numero) {
-        ItemNotaFiscal current = inicio;
-        while (current != null) {
-            if (current.temNumero(numero)) {
-                return current.toString();
+    public ItemNotaFiscal encontrarNotaPorNumero(String numero) {
+        ItemNotaFiscal atual = inicio;
+        while (atual != null) {
+            if (atual.getItemNumero().equalsIgnoreCase(numero)) {
+                return atual;
             }
-            current = current.proximo;
+            atual = atual.proximo;
         }
         return null;
+    }
+
+    public void imprimirTodaLista() {
+        ItemNotaFiscal itemAtual = inicio;
+        while (itemAtual != null) {
+            System.out.println(itemAtual.toString());
+            itemAtual = itemAtual.proximo;
+        }
     }
 
     @Override
@@ -39,5 +47,8 @@ public class ListaItemNotaFiscal {
 
     public int getQuantidade() {
         return quantidade;
+    }
+
+    public void adicionar(NotaFiscal nf) {
     }
 }

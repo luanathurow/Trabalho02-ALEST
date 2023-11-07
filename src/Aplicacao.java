@@ -1,9 +1,9 @@
+
 import java.io.IOException;
 import java.util.Scanner;
 
 public class Aplicacao {
     public static void main(String[] args) throws IOException {
-
         BancoDeDados bancoDeDados = new BancoDeDados();
         ListaItemNotaFiscal lista = new ListaItemNotaFiscal();
 
@@ -35,31 +35,32 @@ public class Aplicacao {
                     scanner.nextLine();
                     String num = scanner.nextLine();
 
-                    String resultado = lista.encontrarNotaPorNumero(num);
+                    ItemNotaFiscal itemEncontrado = lista.encontrarNotaPorNumero(num);
 
-                    if (resultado != null) {
-                        System.out.println(resultado);
+                    if (itemEncontrado != null) {
+                        System.out.println(itemEncontrado.toString());
                     } else {
-                        System.out.println("Nota fiscal nao encontrada para o numero informado.");
+                        System.out.println("Nota fiscal nao encontrada.");
                     }
                     break;
                 case 2:
-                    System.out.println("Voce escolheu a opcao 2.");
+                    System.out.println("Você escolheu a opcao 2.");
                     break;
                 case 3:
-                    System.out.println("Voce escolheu a opcao 3.");
+                    System.out.println("Você escolheu a opcao 3.");
                     break;
                 case 4:
-                    System.out.println("Voce escolheu a opcao 4.");
+                    System.out.println("Você escolheu a opcao 4.");
                     break;
                 case 5:
-                    System.out.println("Voce escolheu a opcao 5.");
+                    System.out.println("Você escolheu a opção 5.");
+                    lista.imprimirTodaLista();
                     break;
                 case 6:
                     System.out.println("Saindo do programa.");
                     break;
                 default:
-                    System.out.println("Opcao inválida. Tente novamente.");
+                    System.out.println("Opcao invalida. Tente novamente.");
             }
         } while (op != 6);
 

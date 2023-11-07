@@ -6,9 +6,9 @@ import java.sql.Date;
 public class BancoDeDados {
     public void lerArquivo() throws IOException {
         String linha;
-        String arquivo = "C:\\T2-ALEST\\arq\\notas_fiscais_00100.csv";
-        BufferedReader leitor = new BufferedReader(new FileReader(arquivo));
+        String arquivo = "C:\\Trabalho02-ALEST\\arq\\notas_fiscais_00100.csv";
         try {
+            BufferedReader leitor = new BufferedReader(new FileReader(arquivo));
             System.out.println(leitor.readLine()); // pula a primeira linha do cabeçalho
             linha = leitor.readLine();
             String[] colunas = linha.split("[|]");
@@ -38,14 +38,11 @@ public class BancoDeDados {
                         Integer.parseInt(colunas[9]),
                         Double.parseDouble(colunas[10]));
                 items.adicionar(item);
-
-                // teste para ver se eles estao devidamente adicionados
-                // System.out.println("Item adicionado à NF " + nf.getNumero() + ": " + item);
+                System.out.println("Item adicionado à NF " + nf.getNumero() + ": " + item);
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
         // lista.imprimirLista();
     }
-
 }
