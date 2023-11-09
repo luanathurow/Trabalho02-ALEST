@@ -7,6 +7,15 @@ public class Aplicacao {
 
         try {
             BancoDeDados.lerArquivo(listaNotaFiscal);
+
+            // exibe a quantidade de notas carregadas
+            int quantidadeNotasCarregadas = listaNotaFiscal.getQuantidade();
+            System.out.println("Quantidade de notas carregadas: " + quantidadeNotasCarregadas);
+
+            // calcula e exibe o valor total de todas as notas
+            double valorTotalNotas = listaNotaFiscal.calcularValorTotalNotas();
+            System.out.println("Valor total de todas as notas: R$" + valorTotalNotas);
+
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -8,16 +8,50 @@ public class ListaNotaFiscal {
         inicio.setProximo(fim);
         fim.setAnterior(inicio);
     }
+
+    //inserindo na lista ordenando por data
     public void adicionar(NotaFiscal nf) {
         if (quantidade == 0) {
             inicio = nf;
             fim = nf;
         } else {
-            nf.setAnterior(fim);  
-            fim.setProximo(nf);   
-            fim = nf;             
+            NotaFiscal atual = inicio;
+
+            // Procurar a posição correta para inserir a nota fiscal com base na data
+            while (atual != null && nf.getData().after(atual.getData())) {
+                atual = atual.getProximo();
+            }
+
+            if (atual == null) {
+                // Inserir no final da lista
+                nf.setAnterior(fim);
+                fim.setProximo(nf);
+                fim = nf;
+            } else {
+                // Inserir antes de atual
+                nf.setProximo(atual);
+                nf.setAnterior(atual.getAnterior());
+                if (atual.getAnterior() == null) {
+                    inicio = nf;
+                } else {
+                    atual.getAnterior().setProximo(nf);
+                }
+                atual.setAnterior(nf);
+            }
         }
         quantidade++;
+    }
+
+    public double calcularValorTotalNotas() {
+        NotaFiscal atual = inicio;
+        double valorTotal = 0;
+
+        while (atual != null) {
+            valorTotal += calcularValorTotalNota(atual);
+            atual = atual.getProximo();
+        }
+
+        return valorTotal;
     }
     
 
@@ -50,17 +84,6 @@ public class ListaNotaFiscal {
         return numeroMaiorValor;
     }
     
-    private double calcularValorTotalNota(NotaFiscal nota) {
-        ListaItemNotaFiscal itens = nota.getItens();
-        ItemNotaFiscal[] listaItens = itens.getItens();
-        double valorTotal = 0;
-    
-        for (ItemNotaFiscal item : listaItens) {
-            valorTotal += item.getValorTotalItem();
-        }
-    
-        return valorTotal;
-    }
     
     public String obterNumeroNotaFiscalMenorValor() {
         NotaFiscal atual = inicio;
@@ -77,6 +100,18 @@ public class ListaNotaFiscal {
         }
     
         return numeroMenorValor;
+    }
+
+     private double calcularValorTotalNota(NotaFiscal nota) {
+        ListaItemNotaFiscal itens = nota.getItens();
+        ItemNotaFiscal[] listaItens = itens.getItens();
+        double valorTotal = 0;
+    
+        for (ItemNotaFiscal item : listaItens) {
+            valorTotal += item.getValorTotalItem();
+        }
+    
+        return valorTotal;
     }
     
     public String obterNumeroNotaFiscalComMaisItens() {
@@ -110,6 +145,8 @@ public class ListaNotaFiscal {
             atual = atual.getProximo();
         }
     }
-    
+    public int getQuantidade() {
+        return quantidade;
+        }    
     
 }

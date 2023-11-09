@@ -8,7 +8,6 @@ public class BancoDeDados {
         String linha;
         String arquivo = "C:\\Trabalho02-ALEST-main\\arq\\notas_fiscais_00100.csv";
         BufferedReader leitor = new BufferedReader(new FileReader(arquivo));
-        //ListaNotaFiscal exemploListaNF = new ListaNotaFiscal();
         NotaFiscal nf = null;
 
         try {

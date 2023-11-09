@@ -31,6 +31,21 @@ public class ListaItemNotaFiscal {
     }
 
     public ItemNotaFiscal[] getItens() {
-        return null;
+        if (quantidade == 0) {
+            return null; // Retorna null se a lista estiver vazia
+        }
+    
+        ItemNotaFiscal[] itens = new ItemNotaFiscal[quantidade];
+        ItemNotaFiscal aux = inicio;
+        int index = 0;
+    
+        while (aux != null) {
+            itens[index] = aux;
+            aux = aux.proximo;
+            index++;
+        }
+    
+        return itens;
     }
+    
 }

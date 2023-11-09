@@ -31,5 +31,14 @@ public class ItemNotaFiscal {
         return valorUnitario;
     }
 
-
+    @Override
+    public String toString() {
+        return "ItemNotaFiscal{" +
+                "itemNumero='" + itemNumero + '\'' +
+                ", descricao='" + descricao + '\'' +
+                ", quantidade=" + quantidade +
+                ", valorUnitario=" + valorUnitario +
+                ", proximo=" + proximo +
+                '}';
+    }
 }

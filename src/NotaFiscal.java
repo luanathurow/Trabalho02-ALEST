@@ -11,6 +11,7 @@ public class NotaFiscal {
     private ListaItemNotaFiscal itens;
     public NotaFiscal proximo;
     public NotaFiscal anterior;
+    private int numeroNotaFiscal;
     
     public NotaFiscal() {
         itens = new ListaItemNotaFiscal();
@@ -71,6 +72,9 @@ public class NotaFiscal {
     public void setEstado(String estado) {
         this.estado = estado;
     }
+    public int getNumeroNotaFiscal() {
+        return numeroNotaFiscal;
+    }
 
     public ListaItemNotaFiscal getItens() {
         return itens;
@@ -98,12 +102,10 @@ public class NotaFiscal {
 
     @Override
     public String toString() {
-        return "ItemNotaFiscal{" +
-                "itemNumero='" + numero + '\'' +
-                ", descricao='" + cliente + '\'' +
-                //", quantidade=" + quantidade +
-                //", valorUnitario=" + valorUnitario +
-                ", proximo=" + proximo +
+        return "Nota Fiscal: {" +
+                "Número='" + numero + '\'' +
+                ", Data=" + data +
+                ", Cliente='" + cliente + '\'' +
                 '}';
-    }
+    }    
 }
